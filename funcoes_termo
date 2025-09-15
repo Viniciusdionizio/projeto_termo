@@ -1,0 +1,40 @@
+from bibliotecas_termo import biblioteca_br
+def erro(palavra):
+    dicc = {}
+    for i in palavra:
+        dicc[i] = 0
+    for i in palavra:
+        dicc[i] += 1
+    return dicc
+
+def letra_letra(palavra,p):
+    lista_final=[]
+    c = erro(p)
+    lista = [*range(len(p))]
+    for letra in palavra:
+        for i in lista:
+            if palavra[i] == p[i] and palavra[i] == letra:
+                lista_final.append('\x1b[32m'+ palavra[i])
+                c[palavra[i]] -= 1
+                lista.remove(i)
+                break
+    for i in lista:
+        if palavra[i] in p and c[palavra[i]] > 0:
+            lista_final.append('\x1b[33m'+ palavra[i])
+            c[palavra[i]] -= 1
+        else:
+            lista_final.append('\x1b[31m'+ palavra[i])
+    return lista_final
+
+palavra=biblioteca_br()
+contador = 0
+while True:
+    if contador > 5:
+        print('\x1b[0mfracassado :(')
+        break
+    contador +=1
+    a=input('\x1b[0mINSIRA A PALAVRA: ')
+    l = letra_letra(a, palavra)
+    print(f'[{l[0]}] [{l[1]}] [{l[2]}] [{l[3]}] [{l[4]}]')
+    if a == palavra:
+        break
