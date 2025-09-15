@@ -1,0 +1,87 @@
+from random import randint
+
+def escolher_random(lista):
+    i = randint(0, len(lista) - 1)
+    print(lista[i])
+    return lista[i]
+
+def biblioteca_br():
+    palavras=["termo", "negro", "êxito", "mexer", "nobre", "efeito", "ética", "algoz", "plena", "fazer",
+    "assim", "mútua", "sobre", "aquém", "seco", "vigor", "poder", "sutil", "porém", "fosse",
+    "cerne", "ideia", "ponto", "audaz", "inato", "quiçá", "desde", "amigo", "ícone", "honra",
+    "torpe", "razão", "amável", "égide", "etnia", "fútil", "anexo", "tempo", "boçal", "lapso",
+    "então", "expor", "casal", "xibiu", "hábil", "mútuo", "saber", "senso", "ainda", "óbice",
+    "ávido", "dizer", "para", "dever", "causa", "temor", "mândio", "ceder", "crivo", "coser",
+    "temer", "fugaz", "censo", "ânsia", "ápice", "posse", "prole", "pudor", "rancar", "cortar",
+    "pávida", "detém", "jeito", "cru", "anseio", "culto", "atroz", "digno", "haver", "vulgo",
+    "vício", "gleba", "homem", "todos", "revers", "valha", "sábio", "dogma", "neném", "louco",
+    "terno", "limbo", "feliz", "pedir", "herói", "ímpar", "ajuda", "usar", "falso", "certo",
+    "falar", "servo", "prosa", "pífio", "desse", "presa", "posso", "conhô", "vital", "manso",
+    "serio", "melga", "visar", "linda", "nossa", "forma", "água", "acaso", "fluir", "afago",
+    "apelo", "platão", "abrir", "garbo", "praxe", "ímpio", "óbvio", "matiz", "afins", "êxodo",
+    "pleno", "crise", "viver", "fluxo", "ritmo", "morte", "senil", "havia", "levar", "mágoa",
+    "cosmo", "cisma", "exílio", "prumo", "ouvir", "pavor", "brega", "cabal", "reles", "falta",
+    "vulto", "parco", "canula", "bravo", "favor", "pauta", "vivaz", "tenro", "único", "força",
+    "ameno", "tendo", "raro", "laico", "passou", "grato", "nicho", "rumor", "sagaz", "rubro",
+    "ranço", "pobre", "orgaz", "noite", "raso", "papel", "épico", "farsa", "muito", "frase",
+    "sesta", "leigo", "sinto", "citar", "óbito", "selar", "líder", "ditar", "ator", "velho",
+    "ciume", "sonso", "vazio", "haste", "adiar", "humor", "gente", "ficar", "tende", "arduo",
+    "ideal", "fonte", "sulco", "sinal", "premo", "cabot", "igual", "marco", "amplo", "canto",
+    "capaz", "lavra", "cuado", "relevo", "ótica", "gesto", "jovem"]
+    return escolher_random(palavras)
+
+def biblioteca_eng():
+    palavras=["witch", "there", "their", "about", "would",
+    "other", "words", "could", "write", "first", "water",
+    "after", "where", "right", "think", "three", "years",
+    "great", "order", "great", "again", "still", "small",
+    "found", "those", "never", "under", "night", "might",
+    "while", "house", "world", "below", "asked", "going",
+    "earth", "began", "since", "study", "night", "light",
+    "above", "paper", "parts", "young", "story", "point",
+    "times", "heard", "whole", "white", "given", "means",
+    "music", "miles", "thing", "today", "later", "using",
+    "money", "lines", "order", "group", "among", "learn",
+    "known", "space", "table", "early", "trees", "short",
+    "state", "black", "shown", "stood", "front", "voice",
+    "kinds", "makes", "comes", "close", "power", "lived",
+    "vowel", "taken", "built", "heart", "ready", "quite",
+    "piece", "green", "stand", "birds", "start", "river",
+    "tried", "field", "whose", "girls", "leave", "added",
+    "color", "third", "hours", "moved", "plant", "doing",
+    "names", "forms", "heavy", "ideas", "cried", "check",
+    "floor", "begin", "woman", "alone", "plane", "spell",
+    "watch", "carry", "wrote", "clear", "named", "books",
+    "child", "glass", "human", "takes", "party", "build",
+    "seems", "blood", "sides", "seven", "mouth", "solve",
+    "north", "value", "death", "maybe", "happy", "tells",
+    "gives", "looks", "shape", "lives", "steps", "areas",
+    "sense", "speak", "force", "ocean", "speed", "women",
+    "metal", "south", "grass", "scale", "cells", "sleep",
+    "wrong", "main", "pages", "ships", "needs", "rocks",
+    "eight", "major", "level", "total", "ahead", "reach",
+    "stars", "store", "these"]
+    return escolher_random(palavras)
+
+def biblioteca_esp():
+    palavras=["tocar", "golpe", "nuevo", "deseo", "apoyo",
+    "valor", "poder", "miedo", "perro", "orden", "mucho",
+    "tocar", "mirar", "jugar", "mujer", "niño", "hora",
+    "amor", "luego", "bueno", "sabio", "forma", "texto",
+    "campo", "lugar", "hombre", "tarde", "noche", "justo",
+    "ropa", "cielo", "punto", "carta", "voz", "libro",
+    "sueño", "viaje", "saber", "cuerpo", "heroe", "prueba",
+    "accion", "juego", "ganar", "rival", "union", "creer",
+    "camino", "feliz", "mente", "llama", "grito", "espia",
+    "eco", "paz", "ritmo", "color", "sorte", "joven",
+    "deseo", "año", "error", "canto", "sol", "viento",
+    "noche", "fuego", "luz", "vacio", "fama", "rey",
+    "dios", "alma", "verde", "cielo", "miedo", "paz",
+    "necio", "aura", "error", "alto", "bajo", "canto",
+    "beber", "llorar", "vivir", "dormir", "gritar", "reir",
+    "besar", "gozar", "temor", "rojo", "tacto", "juego",
+    "poder", "sueños", "noche", "silencio", "cita", "fiebre",
+    "valor", "fuerza", "tristeza", "caos", "ritual", "hecho",
+    "futuro", "epico", "cerdo", "falso", "actor", "unico"]
+    return escolher_random(palavras)
+
