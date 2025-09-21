@@ -1,8 +1,11 @@
 from bibliotecas_termo import biblioteca_br
+#cria um dicionário com a quantidade de cada letra
 def letras(palavra):
     dicc = {}
+    #primeiro faz cada letra ter valor zero
     for i in palavra:
         dicc[i] = 0
+    #dps aumenta em 1 para cada letra na palavra
     for i in palavra:
         dicc[i] += 1
     return dicc
@@ -10,26 +13,33 @@ def letras(palavra):
 def letra_letra(palavra,p):
     lista_final=[]
     c = letras(p)
-    lista = [*range(len(p))]
+    #cria uma lista com os valores do range da palavra
+    lista = [*range(len(palavra))]
     i = 0
+    #aqui faz a lista de letras sem modificação 
     for letra in palavra:
         lista_final.append(letra)
+    #aqui acha as letras certas e deixa elas verdes
     while i < len(p):
         if palavra[i] == p[i]:
             lista_final[i] = '\x1b[32m'+ palavra[i]
+            #aqui tira 1 pra cada vez que a letra aparece, pra caso ela apareça mais de 1 vez
             c[palavra[i]] -= 1
+            #aqui ele remove os índices já alterados da lista de índices 
             lista.remove(i)
         i += 1
-            
+    #aqui ele usa a lista sem os índices já usados     
     for i in lista:
+        #aqui ele analisa se a letra ainda esta contida na palavra, e se ainda tem dessa letra na palavra, tranforma em amarelo
         if palavra[i] in p and c[palavra[i]] > 0:
             lista_final[i] = '\x1b[33m'+ palavra[i]
             c[palavra[i]] -= 1
+        #aqui ele transforma o resto que sobrou em vermelho
         else:
             lista_final[i] = '\x1b[31m'+ palavra[i]
     return lista_final
 
-
+#aqui é o ranking, tu sabe, é o básico 
 def ranking(num, temp):
     base = 1000
     ftentativas = (6 - num) / 6
