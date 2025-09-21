@@ -29,6 +29,18 @@ def letra_letra(palavra,p):
             lista_final[i] = '\x1b[31m'+ palavra[i]
     return lista_final
 
+
+def ranking(num, temp):
+    base = 1000
+    ftentativas = (6 - num) / 6
+    ftempo = (120 - temp) / 120
+    pontos = int(base*ftentativad*ftempo)
+    if num == 1:
+        pontos += 200
+    if num >= 6:
+        pontos = 0
+    return pontos
+
 palavra=biblioteca_br()
 contador = 0
 while True:
@@ -41,3 +53,6 @@ while True:
     print(f'[{l[0]}] [{l[1]}] [{l[2]}] [{l[3]}] [{l[4]}]')
     if a == palavra:
         break
+
+pontuação = ranking(num,temp)
+print(pontuação)
