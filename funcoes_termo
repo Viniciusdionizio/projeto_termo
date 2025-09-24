@@ -1,5 +1,6 @@
 from bibliotecas_termo import biblioteca_br
 import os
+import time
 #cria um dicionário com a quantidade de cada letra
 def letras(palavra):
     dicc = {}
@@ -55,12 +56,21 @@ def ranking(num, temp):
 palavra=biblioteca_br()
 contador = 0
 
+arquivo = 'ranking.py'
+
+if os.path.exists(arquivo):
+    from ranking import rank
+else:
+    rank = {}
+
 while True:
     nome = input()
     if nome in rank:
         break
     else:
         print('já existe uma pessoa com este nome')
+
+c = time.time()
 
 while True:
     if contador > 5:
@@ -73,16 +83,8 @@ while True:
     if a == palavra:
         break
 
-pontuação = ranking(num,temp)
+pontuação = ranking(contador,time.time() - c)
 print(pontuação)
-
-arquivo = 'ranking.py'
-
-if os.path.exists(arquivo):
-    from ranking import rank
-else:
-    rank = {}
-
 rank[nome] = pontuação 
 
 with open(arquivo, 'w', encoding='utf-8') as f
