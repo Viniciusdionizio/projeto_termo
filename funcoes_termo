@@ -1,33 +1,77 @@
 from bibliotecas_termo import biblioteca_br
-def erro(palavra):
+import os
+import time
+#cria um dicionário com a quantidade de cada letra
+def letras(palavra):
     dicc = {}
+    #primeiro faz cada letra ter valor zero
     for i in palavra:
         dicc[i] = 0
+    #dps aumenta em 1 para cada letra na palavra
     for i in palavra:
         dicc[i] += 1
     return dicc
 
 def letra_letra(palavra,p):
     lista_final=[]
-    c = erro(p)
-    lista = [*range(len(p))]
+    c = letras(p)
+    #cria uma lista com os valores do range da palavra
+    lista = [*range(len(palavra))]
+    i = 0
+    #aqui faz a lista de letras sem modificação 
     for letra in palavra:
-        for i in lista:
-            if palavra[i] == p[i] and palavra[i] == letra:
-                lista_final.append('\x1b[32m'+ palavra[i])
-                c[palavra[i]] -= 1
-                lista.remove(i)
-                break
-    for i in lista:
-        if palavra[i] in p and c[palavra[i]] > 0:
-            lista_final.append('\x1b[33m'+ palavra[i])
+        lista_final.append(letra)
+    #aqui acha as letras certas e deixa elas verdes
+    while i < len(p):
+        if palavra[i] == p[i]:
+            lista_final[i] = '\x1b[32m'+ palavra[i]
+            #aqui tira 1 pra cada vez que a letra aparece, pra caso ela apareça mais de 1 vez
             c[palavra[i]] -= 1
+            #aqui ele remove os índices já alterados da lista de índices 
+            lista.remove(i)
+        i += 1
+    #aqui ele usa a lista sem os índices já usados     
+    for i in lista:
+        #aqui ele analisa se a letra ainda esta contida na palavra, e se ainda tem dessa letra na palavra, tranforma em amarelo
+        if palavra[i] in p and c[palavra[i]] > 0:
+            lista_final[i] = '\x1b[33m'+ palavra[i]
+            c[palavra[i]] -= 1
+        #aqui ele transforma o resto que sobrou em vermelho
         else:
-            lista_final.append('\x1b[31m'+ palavra[i])
+            lista_final[i] = '\x1b[31m'+ palavra[i]
     return lista_final
+
+#aqui é o ranking, tu sabe, é o básico 
+def ranking(num, temp):
+    base = 1000
+    ftentativas = (6 - num) / 6
+    ftempo = (120 - temp) / 120
+    pontos = int(base*ftentativad*ftempo)
+    if num == 1:
+        pontos += 200
+    if num >= 6:
+        pontos = 0
+    return pontos
 
 palavra=biblioteca_br()
 contador = 0
+
+arquivo = 'ranking.py'
+
+if os.path.exists(arquivo):
+    from ranking import rank
+else:
+    rank = {}
+
+while True:
+    nome = input()
+    if nome in rank:
+        break
+    else:
+        print('já existe uma pessoa com este nome')
+
+c = time.time()
+
 while True:
     if contador > 5:
         print('\x1b[0mfracassado :(')
@@ -38,3 +82,13 @@ while True:
     print(f'[{l[0]}] [{l[1]}] [{l[2]}] [{l[3]}] [{l[4]}]')
     if a == palavra:
         break
+
+pontuação = ranking(contador,time.time() - c)
+print(pontuação)
+rank[nome] = pontuação 
+
+with open(arquivo, 'w', encoding='utf-8') as f
+    f.write('rank = {')
+    for jogador, pontos in rank.items():
+        f.write(f"'{jogador}' :{pontos}")
+    f.write('}')
