@@ -17,3 +17,10 @@ while True:
   if organiza(lis):
     break
 
+n =[]
+i=0
+while True:
+  if i >= 10 or i >= len(lis):
+    break
+  n.append(lis[i])
+  i += 1
