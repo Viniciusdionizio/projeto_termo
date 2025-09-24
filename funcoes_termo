@@ -1,4 +1,5 @@
 from bibliotecas_termo import biblioteca_br
+import os
 #cria um dicionário com a quantidade de cada letra
 def letras(palavra):
     dicc = {}
@@ -66,3 +67,25 @@ while True:
 
 pontuação = ranking(num,temp)
 print(pontuação)
+
+arquivo = 'ranking.py'
+
+if os.path.exists(arquivo):
+    from ranking import rank
+else:
+    rank = {}
+
+while True:
+    nome = input()
+    if nome in rank:
+        break
+    else:
+        print('já existe uma pessoa com este nome')
+
+rank[nome] = pontuação 
+
+with open(arquivo, 'w', encoding='utf-8') as f
+    f.write('rank = {')
+    for jogador, pontos in rank.items():
+        f.write(f"'{jogador}' :{pontos}")
+    f.write('}')
