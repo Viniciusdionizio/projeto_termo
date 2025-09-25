@@ -8,6 +8,13 @@ def organiza(lista):
       n = False
   return n
 
+def minha_posição(l, nome):
+  for i in range(len(l)):
+    if nome == l[i][0]:
+      return i + 1
+  return "Seu nome não existe"
+  
+
 lis = []
 
 for e in rank.items():
