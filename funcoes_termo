@@ -56,19 +56,7 @@ def ranking(num, temp):
 palavra=biblioteca_br()
 contador = 0
 
-arquivo = 'ranking.py'
-
-if os.path.exists(arquivo):
-    from ranking import rank
-else:
-    rank = {}
-
-while True:
-    nome = input()
-    if nome in rank:
-        break
-    else:
-        print('já existe uma pessoa com este nome')
+nome = input()
 
 c = time.time()
 
@@ -85,7 +73,14 @@ while True:
 
 pontuação = ranking(contador,time.time() - c)
 print(pontuação)
-from ranking import rank
+
+arquivo = 'ranking.py'
+
+if os.path.exists(arquivo):
+    from ranking import rank
+else:
+    rank = {}
+
 rank[nome] = pontuação 
 
 with open(arquivo, 'w', encoding='utf-8') as f
