@@ -85,6 +85,7 @@ while True:
 
 pontuação = ranking(contador,time.time() - c)
 print(pontuação)
+from ranking import rank
 rank[nome] = pontuação 
 
 with open(arquivo, 'w', encoding='utf-8') as f
