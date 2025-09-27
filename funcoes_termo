@@ -83,7 +83,7 @@ else:
 
 rank[nome] = pontuação 
 
-with open(arquivo, 'w', encoding='utf-8') as f
+with open(arquivo, 'w', encoding='utf-8') as f:
     f.write('rank = {')
     for jogador, pontos in rank.items():
         f.write(f"'{jogador}' :{pontos}")
