@@ -20,6 +20,8 @@ def printar_teclado(stdscr, alfabeto, y, x):
             stdscr.addstr(y + linha_idx,x + colunn_idx*3, letra, cor)
 
 def jogar_menu(stdscr):
+    curses.resizeterm(40,152)
+    stdscr.clear()
     stdscr.refresh()
     curses.curs_set(0)
     stdscr.nodelay(False)
