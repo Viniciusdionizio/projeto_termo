@@ -16,7 +16,7 @@ def printar_teclado(stdscr, alfabeto, y, x):
             if alfabeto[letra] > 0:
                 cor = curses.color_pair(alfabeto[letra])
             else: cor = curses.color_pair(0)
-            stdscr.addstr(y + linha_idx*2,x + cor_idx*3, letra, cor)
+            stdscr.addstr(y + linha_idx,x + cor_idx*3, letra, cor)
 
 def jogar_menu(stdscr):
     stdscr.refresh()
@@ -38,18 +38,27 @@ def jogar_menu(stdscr):
             dicc[i] += 1
         return dicc
 
-    def printar_palavra(stdscr):
+    def printar_palavra(stdscr,modo):
         palavra = biblioteca_br()
         contador = 0
         alfabeto = {chr(c): 0 for c in range(ord('A'), ord('Z')+1)}
 
         while True:
-            stdscr.addstr(3, x-22, "DIGITE UMA PALAVRA: ")
+            stdscr.addstr(3, x-34, "DIGITE UMA PALAVRA DE 5 LETRAS: ")
             stdscr.refresh()
             dicc = letras(palavra)
 
-            if contador > 5:
-                stdscr.move(3, x-22)
+            if contador > 5 and modo==0:
+                stdscr.move(3, x-34)
+                stdscr.clrtoeol()
+                stdscr.addstr(3, x-5, "DERROTA!!!", curses.color_pair(1))
+                stdscr.refresh()
+                time.sleep(3)
+                stdscr.clear()
+                break
+
+            elif contador > 6 and modo==1:
+                stdscr.move(3, x-34)
                 stdscr.clrtoeol()
                 stdscr.addstr(3, x-5, "DERROTA!!!", curses.color_pair(1))
                 stdscr.refresh()
@@ -67,14 +76,14 @@ def jogar_menu(stdscr):
                     stdscr.clrtoeol()
                     break
                 else: #se for diferented e 5 letras
-                    stdscr.move(3, x-22)
+                    stdscr.move(3, x-34)
                     stdscr.clrtoeol()
                     stdscr.addstr(3, x-(27//2), "DIGITE EXATAMENTE 5 LETRAS!", curses.color_pair(1))
                     stdscr.refresh()
                     time.sleep(1)
-                    stdscr.move(3, x-22)
+                    stdscr.move(3, x-34)
                     stdscr.clrtoeol()
-                    stdscr.addstr(3, x-22, "DIGITE UMA PALAVRA: ")
+                    stdscr.addstr(3, x-34, "DIGITE UMA PALAVRA DE 5 LETRAS: ")
                     stdscr.refresh()
 
             cores = [1] * 5 #processa as cores 
@@ -109,21 +118,53 @@ def jogar_menu(stdscr):
             stdscr.refresh()
 
             if a == palavra:
-                stdscr.move(3, x-22)
+                stdscr.move(3, x-34)
                 stdscr.clrtoeol()
                 stdscr.addstr(3, x-5, "VITÓRIA!!!", curses.color_pair(3))
                 stdscr.refresh()
                 time.sleep(3)
                 stdscr.clear()
                 break
+    
+    def escolher_modo(stdscr):
+        options=['SOLO','DUETO']
+        altura,largura = stdscr.getmaxyx()
+        select=0
 
-    printar_palavra(stdscr)
+        while True:
+            stdscr.refresh()
+            for i in range(len(options)): #mostra a opção que você está
+                if i == select:
+                    stdscr.addstr(altura//2+i,largura//2-2,options[i],curses.A_REVERSE)
+                else:   
+                    stdscr.addstr(altura//2+i,largura//2-2,options[i])
+                
+            key = stdscr.getch()
 
-def main_menu(stdscr):
+            if key == curses.KEY_UP and select != 0: #para cima
+                select-=1
+                stdscr.clear()
+            elif key == curses.KEY_DOWN and select < len(options)-1: #para baixo
+                select+=1
+            elif key == curses.KEY_ENTER or key in [10,13]: #enter
+                stdscr.clear()
+                printar_palavra(stdscr,select)
+                break
+            
+    escolher_modo(stdscr)
+
+def aviso(stdscr):
+    altura,largura = stdscr.getmaxyx()
+    stdscr.addstr(altura//2, largura//2-23,'ESSE PROGRAMA DEVE SER RODADO EM TELA CHEIA!!!')
+    stdscr.refresh()
+    stdscr.getch()
+    stdscr.clear()
+
+def main_menu(stdscr): #parte do menu principal
     curses.curs_set(0)
     stdscr.nodelay(False)
     altura,largura = stdscr.getmaxyx()
-    text=['Jogar','Ranking','Sair']
+    text=['JOGAR','SAIR']
     head=["████████╗███████╗██████╗ ███╗   ███╗ ██████╗ ",
           "╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██╔═══██╗",
           "   ██║   █████╗  ██████╔╝██╔████╔██║██║   ██║",
@@ -134,7 +175,9 @@ def main_menu(stdscr):
     select=0
     x = largura//2 - len(text[0])//2
     y = altura//2
-    
+
+    aviso(stdscr)
+
     while True:
         stdscr.refresh()
         for j in range(len(head)): #imprime "TERMO" na tela
@@ -148,7 +191,6 @@ def main_menu(stdscr):
                 stdscr.addstr(y+i,x,text[i])
         
         key = stdscr.getch()
-        stdscr.clear()
 
         if key == curses.KEY_UP and select != 0: #para cima
             select-=1
