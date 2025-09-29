@@ -235,6 +235,8 @@ def aviso(stdscr):
     stdscr.clear()
 
 def main_menu(stdscr): #parte do menu principal
+    curses.resizeterm(40,152)
+    stdscr.clear()
     curses.curs_set(0)
     stdscr.nodelay(False)
     altura,largura = stdscr.getmaxyx()
