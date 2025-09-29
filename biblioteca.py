@@ -33,7 +33,7 @@ def biblioteca_br():
     'levar', 'leite', 'cosmo', 'cisma', 'prumo',
     'ouvir', 'pavor', 'brega', 'cabal', 'minha',
     'falta', 'vulto', 'parco', 'bravo', 'favor',
-    'pauta', 'vivaz', 'tenro', 'unico', 'forca',
+    'pauta', 'vivaz', 'tenro', 'forca', 'peixe',
     'ameno', 'tendo', 'laico', 'grato', 'nicho',
     'rumor', 'sagaz', 'rubro', 'pobre', 'sorte',
     'brisa', 'noite', 'papel', 'libra', 'farsa',
@@ -43,7 +43,15 @@ def biblioteca_br():
     'adiar', 'humor', 'gente', 'ficar', 'tende',
     'morte', 'ideal', 'fonte', 'sulco', 'sinal',
     'premo', 'carta', 'igual', 'marco', 'amplo',
-    'canto', 'capaz', 'lavra', 'cuado', 'matos']
+    'canto', 'capaz', 'lavra', 'cuado', 'matos',
+    'frase', 'frade', 'lacre', 'opala', 'pouca',
+    'pouco', 'prosa', 'lebre', 'febre', 'peles',
+    'gente', 'mente', 'lente', 'dente', 'sente',
+    'pente', 'jegue', 'gueto', 'minto', 'crina',
+    'pilha', 'filha', 'milha', 'linha', 'minha',
+    'vinha', 'rolha', 'zorra', 'farra', 'marra',
+    'telha', 'velha', 'tripa', 'tropa', 'roupa',
+    'volta', 'senta', 'tribo', 'rapar', 'eixos']
     
     return escolher_random(palavras)
 
@@ -56,6 +64,9 @@ def dicionario_letras(letra):
               " █▀▄",
               " ▀▀ "],
         'C': [" █▀▀",
+              " █  ",
+              " ▀▀▀"],
+        'Ç': [" █▀▀",
               " █  ",
               " ▀▀▀"],
         'D': [" █▀▄",
@@ -99,7 +110,7 @@ def dicionario_letras(letra):
               " ▀  "],
         'Q': [" ▄▀▄",
               " █\\█",
-              "  ▀\\ "],
+              "  ▀\\"],
         'R': [" █▀▄",
               " █▀▄",
               " ▀ ▀"],
